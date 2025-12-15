@@ -1,16 +1,12 @@
 const express = require("express");
-const studentsController = require("./controllers/students.controller");
-
+// const studentsController = require("./controllers/students.controller.js")
+const studentsRoutes =require('./routes/students.routes.js')
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use('/students',studentsRoutes);
 
-app.get("/students", studentsController.getStudents);
-app.get("/students/:id", studentsController.getStudentById);
-app.put("/students/:id", studentsController.updateStudent);
-app.post("/students", studentsController.addStudent);
-app.delete("/students/:id", studentsController.removeStudent);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
