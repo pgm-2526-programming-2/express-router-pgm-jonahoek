@@ -31,7 +31,7 @@ function updateStudent(req, res) {
   const id = req.params.id;
   const students = getStudentData();
   const index = students.findIndex((student) => student.id === id);
-  students[index] = {...req.body , id:req.params.id};
+  students[index] = {id:req.params.id,...req.body};
   writeStudentData(students);
   return res.status(200).json(students[index]);
 }
